@@ -70,17 +70,22 @@ export const LIGHT_THEME = {
   mono: '"JetBrains Mono", ui-monospace, monospace',
 } as const;
 
-/** Admin portal / legal-page dark skin ("Brand dark skin" — deep-navy surfaces, purple accents). */
+/**
+ * Admin portal / legal-page dark skin ("Brand dark skin" — near-black surfaces, purple
+ * accents). Neutrals unified 2026-07-27 to match LATTICE_THEME's bg0/bg1/bg2/line/fg
+ * scale (was deep-navy, kept as its own palette from before this recolor) — app and
+ * marketing now share one dark neutral scale, not just the accent hue.
+ */
 export const DARK_THEME = {
-  bg: '#001730',
-  panel: '#00284A',
-  panel2: '#002347',
-  ink: '#EAF2FB',
-  ink2: '#A9C2D9',
-  ink3: '#6E8CA8',
-  line: '#01396B',
+  bg: '#0f0f0f',
+  panel: '#1a1a1a',
+  panel2: '#252525',
+  ink: '#f8f8f8',
+  ink2: '#c8c8c8',
+  ink3: '#888888',
+  line: '#505050',
   accent: '#9e8dff',
-  acBg: '#1c3668',
+  acBg: '#322f43',
   grid: 'rgba(158,141,255,.05)',
 
   // Scoring triad, brightened for dark surfaces
