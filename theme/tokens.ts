@@ -1,19 +1,26 @@
 /**
- * SkillsHome brand tokens — "Ascending Facets" identity, Blue/White system.
+ * SkillsHome brand tokens — "Ascending Facets" identity, Purple/White system.
  *
  * BRAND is the core 5-color identity used by the logo (see ../logo/SkillsHomeLogo.tsx) —
  * do not recolour outside this set. LIGHT_THEME is the primary app-chrome palette (white
- * surfaces, blue accents) used across the main product. DARK_THEME is the dark-navy skin
- * used for admin/legal surfaces. Both derive their primary hue from BRAND.blue.
+ * surfaces, purple accents) used across the main product. DARK_THEME is the dark-navy skin
+ * used for admin/legal surfaces. Both derive their primary hue from BRAND.blue (kept the
+ * `blue*` key names for continuity even though the hue is now purple — recolored 2026-07-27
+ * to match LATTICE_THEME's --brand hue, oklch(0.71 0.17 288)).
  *
  * Multiple themes are available:
- * - LIGHT_THEME: Primary app-chrome (white bg, LinkedIn-blue accents) — current default
- * - DARK_THEME: Admin portal / legal-page dark skin (deep blue-navy, was `THEME`)
+ * - LIGHT_THEME: Primary app-chrome (white bg, purple accents) — current default
+ * - DARK_THEME: Admin portal / legal-page dark skin (deep navy, purple accents)
  * - CONSOLE_THEME: Archived console theme (lime/charcoal)
- * - LATTICE_THEME: Archived dark-first design system (oklch-based, graph-native)
+ * - LATTICE_THEME: Archived dark-first design system (oklch-based, graph-native) — this is
+ *   where the new purple hue comes from; not itself changed by this recolor
  *
  * A future white-labeled tenant would likely swap LIGHT_THEME/DARK_THEME but keep BRAND,
  * or swap both.
+ *
+ * Only the brand-hue fields moved in this recolor (primary/accent/info/scoreSelf and their
+ * tints/hovers). Neutral surfaces/ink and the other semantic colors (success/warning/error/
+ * scoreVerified) are unchanged — they were never derived from BRAND's blue.
  *
  * All foreground/background pairs below are WCAG AA-checked (>=4.5:1 for body text,
  * >=3:1 for large/tertiary text) — see .claude/design-system.md in skillshome-app for the
@@ -21,14 +28,14 @@
  */
 
 export const BRAND = {
-  blueDeep: '#002347',
-  blue: '#0A66C2',
-  blueLight: '#4A97E8',
+  blueDeep: '#423182',
+  blue: '#786cc2',
+  blueLight: '#9e8dff',
   white: '#FFFFFF',
-  blueSky: '#7CB8F5',
+  blueSky: '#cac4ff',
 } as const;
 
-/** Primary app-chrome theme — white surfaces, LinkedIn-blue accents, cool-gray neutrals. */
+/** Primary app-chrome theme — white surfaces, purple accents, cool-gray neutrals. */
 export const LIGHT_THEME = {
   // Surfaces
   bg: '#F7F9FC',
@@ -43,13 +50,13 @@ export const LIGHT_THEME = {
   ink3: '#86929D',
 
   // Primary / interactive
-  primary: '#0A66C2',
-  primaryHover: '#004182',
-  primaryTint: '#EEF6FF',
-  accent: '#4A97E8',
+  primary: '#786cc2',
+  primaryHover: '#4d3898',
+  primaryTint: '#f3f2fd',
+  accent: '#9e8dff',
 
   // Scoring triad (self-assessed / system-evaluated / verified)
-  scoreSelf: '#0A66C2',
+  scoreSelf: '#786cc2',
   scoreSystem: '#6E42CC',
   scoreVerified: '#057642',
 
@@ -57,13 +64,13 @@ export const LIGHT_THEME = {
   success: '#057642',
   warning: '#B45309',
   error: '#CC1016',
-  info: '#4A97E8',
+  info: '#9e8dff',
 
   sans: '"Sora", system-ui, sans-serif',
   mono: '"JetBrains Mono", ui-monospace, monospace',
 } as const;
 
-/** Admin portal / legal-page dark skin ("Brand dark skin" — deep-navy surfaces, blue accents). */
+/** Admin portal / legal-page dark skin ("Brand dark skin" — deep-navy surfaces, purple accents). */
 export const DARK_THEME = {
   bg: '#001730',
   panel: '#00284A',
@@ -72,12 +79,12 @@ export const DARK_THEME = {
   ink2: '#A9C2D9',
   ink3: '#6E8CA8',
   line: '#01396B',
-  accent: '#4A97E8',
-  acBg: '#00335F',
-  grid: 'rgba(74,151,232,.05)',
+  accent: '#9e8dff',
+  acBg: '#1c3668',
+  grid: 'rgba(158,141,255,.05)',
 
   // Scoring triad, brightened for dark surfaces
-  scoreSelf: '#4A97E8',
+  scoreSelf: '#9e8dff',
   scoreSystem: '#9A7BE8',
   scoreVerified: '#3DDC97',
 

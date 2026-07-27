@@ -7,8 +7,8 @@
  * verified skills, an upward arrow (growth), and a roofline (home).
  *
  * Palette (final — do not recolour outside this set):
- *   Blue-deep #002347 · Blue #0A66C2 · Blue-light #4A97E8
- *   On dark → White #FFFFFF · Blue-sky #7CB8F5 · Blue-light #4A97E8
+ *   Blue-deep #423182 · Blue #786cc2 · Blue-light #9e8dff
+ *   On dark → White #FFFFFF · Blue-sky #cac4ff · Blue-light #9e8dff
  *
  * Props:
  *  variant — "light" (blue-deep/blue/blue-light on light bg) | "dark" (white/blue-sky/blue-light on dark bg)
@@ -22,11 +22,11 @@ interface SkillsHomeLogoProps {
 
 // Brand palette
 const BRAND = {
-  blueDeep: '#002347',
-  blue: '#0A66C2',
-  blueLight: '#4A97E8',
+  blueDeep: '#423182',
+  blue: '#786cc2',
+  blueLight: '#9e8dff',
   white: '#FFFFFF',
-  blueSky: '#7CB8F5',
+  blueSky: '#cac4ff',
 } as const;
 
 // Chevron path geometry on the 64×64 grid (final, from the brand spec).
