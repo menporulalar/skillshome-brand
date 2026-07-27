@@ -3,15 +3,15 @@
  *
  * Direction: "Ascending Facets" (brand handoff, design_handoff_skillshome_logo).
  * Three interlocking, constant-weight chevrons stacked and rising
- * (navy → teal → mint, bottom to top). Reads as layered verified skills, an
- * upward arrow (growth), and a roofline (home).
+ * (deep blue → LinkedIn blue → light blue, bottom to top). Reads as layered
+ * verified skills, an upward arrow (growth), and a roofline (home).
  *
  * Palette (final — do not recolour outside this set):
- *   Navy #1E3A5F · Teal #028090 · Mint #02C39A
- *   On dark → Off-white #EAF2F1 · Teal-light #39ADBD · Mint #02C39A
+ *   Blue-deep #002347 · Blue #0A66C2 · Blue-light #4A97E8
+ *   On dark → White #FFFFFF · Blue-sky #7CB8F5 · Blue-light #4A97E8
  *
  * Props:
- *  variant — "light" (navy/teal/mint on light bg) | "dark" (off-white/teal-light/mint on dark bg)
+ *  variant — "light" (blue-deep/blue/blue-light on light bg) | "dark" (white/blue-sky/blue-light on dark bg)
  *  size    — Tailwind height class, e.g. "h-8", "h-9", "h-12"   default: "h-9"
  */
 
@@ -22,11 +22,11 @@ interface SkillsHomeLogoProps {
 
 // Brand palette
 const BRAND = {
-  navy: '#1E3A5F',
-  teal: '#028090',
-  mint: '#02C39A',
-  offWhite: '#EAF2F1',
-  tealLight: '#39ADBD',
+  blueDeep: '#002347',
+  blue: '#0A66C2',
+  blueLight: '#4A97E8',
+  white: '#FFFFFF',
+  blueSky: '#7CB8F5',
 } as const;
 
 // Chevron path geometry on the 64×64 grid (final, from the brand spec).
@@ -39,8 +39,8 @@ const CHEVRONS = {
 export function SkillsHomeIcon({ variant = 'light', size = 'h-9' }: SkillsHomeLogoProps) {
   const c =
     variant === 'dark'
-      ? { bottom: BRAND.offWhite, middle: BRAND.tealLight, top: BRAND.mint }
-      : { bottom: BRAND.navy, middle: BRAND.teal, top: BRAND.mint };
+      ? { bottom: BRAND.white, middle: BRAND.blueSky, top: BRAND.blueLight }
+      : { bottom: BRAND.blueDeep, middle: BRAND.blue, top: BRAND.blueLight };
 
   return (
     <svg
@@ -63,8 +63,8 @@ export function SkillsHomeWordmark({
   variant = 'light',
   size = 'h-9',
 }: SkillsHomeLogoProps) {
-  const skillsColor = variant === 'dark' ? BRAND.offWhite : BRAND.navy;
-  const homeColor = variant === 'dark' ? BRAND.mint : BRAND.navy;
+  const skillsColor = variant === 'dark' ? BRAND.white : BRAND.blueDeep;
+  const homeColor = variant === 'dark' ? BRAND.blueLight : BRAND.blue;
 
   return (
     <span style={{ display: 'inline-flex', alignItems: 'center', gap: 10 }}>

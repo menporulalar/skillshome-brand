@@ -1,0 +1,104 @@
+/**
+ * Lattice — SkillsHome dark-first design system
+ * Ported from ThinkAI.Social with scoring-tier adaptations
+ *
+ * oklch color space for perceptual accuracy across devices
+ * Four semantic hues: cite (blue), elaborate (cyan), challenge (orange), synthesise (purple)
+ */
+
+@layer base {
+  :root[data-theme="lattice"] {
+    /* ---- Neutral scale — background/foreground steps ---- */
+    --bg-void: oklch(0.13 0.012 264);
+    --bg-0: oklch(0.16 0.013 264);
+    --bg-1: oklch(0.205 0.014 264);
+    --bg-2: oklch(0.245 0.015 264);
+    --bg-3: oklch(0.295 0.016 264);
+
+    --line-soft: oklch(0.27 0.013 264);
+    --line: oklch(0.34 0.014 264);
+
+    --fg-3: oklch(0.46 0.012 264);
+    --fg-2: oklch(0.60 0.012 264);
+    --fg-1: oklch(0.78 0.009 264);
+    --fg-0: oklch(0.97 0.004 264);
+
+    /* ---- Four edge-type hues (semantic color = grammar) ---- */
+    --cite: oklch(0.72 0.15 248);       /* Blue: reference/citation, self-assessed scores */
+    --elaborate: oklch(0.76 0.15 168);  /* Cyan: elaboration, verified/confirmed scores */
+    --challenge: oklch(0.73 0.16 42);   /* Orange: challenge/questions */
+    --synthesise: oklch(0.71 0.17 295); /* Purple: synthesis, AI-evaluated scores */
+
+    /* ---- Status colors ---- */
+    --brand: oklch(0.71 0.17 288);
+    --brand-dim: oklch(0.58 0.13 288);
+    --ok: oklch(0.76 0.15 168);
+    --warn: oklch(0.80 0.15 85);
+    --crit: oklch(0.66 0.20 25);
+
+    /* ---- SkillsHome scoring tiers (mapped to Lattice hues) ---- */
+    --score-user: var(--cite);          /* Self-assessed: cite blue */
+    --score-system: var(--synthesise);  /* AI-evaluated: synthesise purple */
+    --score-verified: var(--elaborate); /* Verified/graded: elaborate cyan */
+    --score-confidence: var(--warn);    /* Confidence threshold: warn orange */
+
+    /* ---- shadcn/ui semantic mapping (enable Tailwind classes) ---- */
+    --background: var(--bg-0);
+    --foreground: var(--fg-0);
+    --card: var(--bg-1);
+    --card-foreground: var(--fg-0);
+    --popover: var(--bg-2);
+    --popover-foreground: var(--fg-0);
+    --primary: var(--brand);
+    --primary-foreground: oklch(0.99 0.01 288);
+    --secondary: var(--bg-2);
+    --secondary-foreground: var(--fg-0);
+    --muted: var(--bg-2);
+    --muted-foreground: var(--fg-2);
+    --accent: var(--bg-3);
+    --accent-foreground: var(--fg-0);
+    --destructive: var(--crit);
+    --destructive-foreground: var(--fg-0);
+    --border: var(--line);
+    --input: var(--line);
+    --ring: var(--brand);
+
+    /* ---- Chart colors (use four hues) ---- */
+    --chart-1: var(--cite);
+    --chart-2: var(--elaborate);
+    --chart-3: var(--challenge);
+    --chart-4: var(--synthesise);
+    --chart-5: var(--brand);
+
+    /* ---- Radius scale ---- */
+    --radius: 12px;
+
+    /* ---- Sidebar (for future sidebar-based layouts) ---- */
+    --sidebar: var(--bg-1);
+    --sidebar-foreground: var(--fg-0);
+    --sidebar-primary: var(--brand);
+    --sidebar-primary-foreground: oklch(0.99 0.01 288);
+    --sidebar-accent: var(--bg-2);
+    --sidebar-accent-foreground: var(--fg-0);
+    --sidebar-border: var(--line-soft);
+    --sidebar-ring: var(--brand);
+
+    /* ---- Typography (Space Grotesk / Newsreader / JetBrains Mono) ---- */
+    --font-sans: "Space Grotesk", system-ui, sans-serif;
+    --font-serif: "Newsreader", Georgia, "Times New Roman", serif;
+    --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  }
+}
+
+@layer base {
+  :root[data-theme="lattice"] * {
+    @apply border-border;
+  }
+
+  :root[data-theme="lattice"] body {
+    @apply bg-background text-foreground font-sans;
+    font-feature-settings: "ss01", "cv01";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+}
