@@ -7,7 +7,7 @@
  * verified skills, an upward arrow (growth), and a roofline (home).
  *
  * Palette (final — do not recolour outside this set):
- *   Blue-deep #423182 · Blue #786cc2 · Blue-light #9e8dff
+ *   Blue-deep #423182 · Blue #7166b6 · Blue-light #9e8dff
  *   On dark → White #FFFFFF · Blue-sky #cac4ff · Blue-light #9e8dff
  *
  * Props:
@@ -23,7 +23,7 @@ interface SkillsHomeLogoProps {
 // Brand palette
 const BRAND = {
   blueDeep: '#423182',
-  blue: '#786cc2',
+  blue: '#7166b6',
   blueLight: '#9e8dff',
   white: '#FFFFFF',
   blueSky: '#cac4ff',

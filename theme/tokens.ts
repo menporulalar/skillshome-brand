@@ -29,7 +29,7 @@
 
 export const BRAND = {
   blueDeep: '#423182',
-  blue: '#786cc2',
+  blue: '#7166b6',
   blueLight: '#9e8dff',
   white: '#FFFFFF',
   blueSky: '#cac4ff',
@@ -50,13 +50,13 @@ export const LIGHT_THEME = {
   ink3: '#86929D',
 
   // Primary / interactive
-  primary: '#786cc2',
+  primary: '#7166b6',
   primaryHover: '#4d3898',
   primaryTint: '#f3f2fd',
   accent: '#9e8dff',
 
   // Scoring triad (self-assessed / system-evaluated / verified)
-  scoreSelf: '#786cc2',
+  scoreSelf: '#7166b6',
   scoreSystem: '#6E42CC',
   scoreVerified: '#057642',
 
