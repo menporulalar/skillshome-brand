@@ -3,31 +3,22 @@
  *
  * Direction: "Ascending Facets" (brand handoff, design_handoff_skillshome_logo).
  * Three interlocking, constant-weight chevrons stacked and rising
- * (deep blue → LinkedIn blue → light blue, bottom to top). Reads as layered
- * verified skills, an upward arrow (growth), and a roofline (home).
+ * (blueDeep → blue → blueLight, bottom to top). Reads as layered verified
+ * skills, an upward arrow (growth), and a roofline (home).
  *
- * Palette (final — do not recolour outside this set):
- *   Blue-deep #423182 · Blue #7166b6 · Blue-light #9e8dff
- *   On dark → White #FFFFFF · Blue-sky #cac4ff · Blue-light #9e8dff
+ * Colors come from ../theme/tokens BRAND — never re-declare them here, or a
+ * recolor of tokens.ts silently leaves the logo behind.
  *
  * Props:
  *  variant — "light" (blue-deep/blue/blue-light on light bg) | "dark" (white/blue-sky/blue-light on dark bg)
  *  size    — Tailwind height class, e.g. "h-8", "h-9", "h-12"   default: "h-9"
  */
+import { BRAND } from '../theme/tokens';
 
 interface SkillsHomeLogoProps {
   variant?: 'light' | 'dark';
   size?: string;
 }
-
-// Brand palette
-const BRAND = {
-  blueDeep: '#423182',
-  blue: '#7166b6',
-  blueLight: '#9e8dff',
-  white: '#FFFFFF',
-  blueSky: '#cac4ff',
-} as const;
 
 // Chevron path geometry on the 64×64 grid (final, from the brand spec).
 const CHEVRONS = {

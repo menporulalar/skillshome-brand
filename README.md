@@ -7,22 +7,44 @@ submodule at `brand/`.
 ## Layout
 
 ```
-logo/
-  SkillsHomeLogo.tsx   SkillsHomeIcon + SkillsHomeWordmark components (zero app-specific
-                       imports — portable as-is). "Ascending Facets" mark: three interlocking
-                       chevrons, navy -> teal -> mint, bottom to top.
-  assets/              exported static SVG/PNG variants (icon, color/mono/reversed marks,
-                       favicons, app icons) generated from the same source
 theme/
-  tokens.ts            BRAND (core 5-color identity, do not recolour outside this set),
-                       THEME (current production app-chrome palette derived from BRAND),
-                       CONSOLE_THEME (archived alternate palette, kept for reference)
+  tokens.ts            ** the only place a hex value is written **
+                       BRAND (core 5-color identity, do not recolour outside this set),
+                       LIGHT_THEME / DARK_THEME (app-chrome palettes derived from BRAND),
+                       CONSOLE_THEME / LATTICE_THEME (archived, kept for reference)
+  tokens.css           GENERATED — CSS custom properties (`--brand-*`) for consumers whose
+                       stylesheets can't import a .ts module
+logo/
+  SkillsHomeLogo.tsx   SkillsHomeIcon + SkillsHomeWordmark components. "Ascending Facets"
+                       mark: three interlocking chevrons rising bottom -> top. Imports its
+                       colors from theme/tokens — no hex of its own.
+  assets/              GENERATED — static SVG mark variants (icon, color/color-dark/mono/
+                       reversed)
+scripts/
+  build-tokens.mjs     regenerates tokens.css + logo/assets/*.svg from tokens.ts
 ```
 
 `BRAND` is the actual trademark-level identity — logo colors, unlikely to change often.
-`THEME`/`CONSOLE_THEME` are page-chrome palettes (surfaces, borders, grid) built on top of
+`LIGHT_THEME`/`DARK_THEME` are page-chrome palettes (surfaces, borders, grid) built on top of
 `BRAND` — more likely to vary per-surface or, eventually, per-tenant. Kept as separate exports
 so a consumer can take just the logo, just a theme, or both.
+
+## Changing a brand color
+
+Edit `theme/tokens.ts`, then:
+
+```bash
+npm run build     # regenerates tokens.css + every SVG mark variant
+```
+
+Commit the regenerated files alongside the token change. `npm run check` re-derives every
+output and exits non-zero if a committed file no longer matches `tokens.ts` — wire it into CI
+in each consuming repo so a half-applied recolor can't merge. (It exists because
+`skillshome-mark-color.svg` sat on a superseded hex for three weeks when the assets were
+maintained by hand.)
+
+**Never** write a hex literal outside `tokens.ts`. Consumers import `BRAND`/`LIGHT_THEME`/
+`DARK_THEME` in TS, or `var(--brand-*)` from `tokens.css` in CSS.
 
 ## Using this repo
 

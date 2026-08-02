@@ -1,0 +1,12 @@
+{
+  "name": "skillshome-brand",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Shared brand identity and app-chrome theme for the SkillsHome repos.",
+  "scripts": {
+    "build": "node --experimental-strip-types scripts/build-tokens.mjs",
+    "check": "node --experimental-strip-types scripts/build-tokens.mjs --check && npm run check:contrast",
+    "check:contrast": "node --experimental-strip-types scripts/check-contrast.mjs"
+  }
+}
