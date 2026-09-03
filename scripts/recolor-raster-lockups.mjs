@@ -12,10 +12,11 @@
  * the same commit as a BRAND change, passing the previous values:
  *
  *   node --experimental-strip-types scripts/recolor-raster-lockups.mjs \
- *     --from '#423182,#786cc2,#9e8dff,#cac4ff,#f4f5f8'
+ *     --from '#004471,#0077b5,#4aa8dc,#a8d8f0,#FFFFFF'
  *
- * --from is the old blueDeep,blue,blueLight,blueSky,white in that order; the new values
- * are read from tokens.ts. Requires sharp (borrowed from the consuming repo).
+ * --from is the old palette in BRAND key order (pre-2026-09-03: blueDeep,blue,
+ * blueLight,blueSky,white; now brassDeep,bronze,brass,brassLight,white); the new
+ * values are read from tokens.ts. Requires sharp (borrowed from the consuming repo).
  */
 import { readFileSync, writeFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
@@ -39,7 +40,7 @@ const parse = (hex) => {
 };
 
 const oldPalette = fromArg.split(',').map(parse);
-const newPalette = [BRAND.blueDeep, BRAND.blue, BRAND.blueLight, BRAND.blueSky, BRAND.white].map(parse);
+const newPalette = [BRAND.brassDeep, BRAND.bronze, BRAND.brass, BRAND.brassLight, BRAND.white].map(parse);
 
 if (oldPalette.length !== newPalette.length) {
   console.error(`--from needs exactly ${newPalette.length} colors, got ${oldPalette.length}.`);

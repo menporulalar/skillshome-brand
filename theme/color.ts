@@ -6,7 +6,7 @@
  * common way the palette drifted out of sync.
  */
 
-/** `withAlpha(BRAND.blueLight, 0.16)` -> `rgba(158, 141, 255, 0.16)`. */
+/** `withAlpha(BRAND.brass, 0.16)` -> `rgba(232, 176, 75, 0.16)`. */
 export function withAlpha(hex: string, alpha: number): string {
   const m = /^#([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i.exec(hex);
   if (!m) throw new Error(`withAlpha expects a 6-digit hex color, got: ${hex}`);

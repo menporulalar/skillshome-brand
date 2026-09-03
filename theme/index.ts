@@ -2,8 +2,8 @@
  * SkillsHome theme system — unified export for all available themes.
  *
  * Themes:
- * - 'light': Primary production theme (white surfaces, LinkedIn-blue accents)
- * - 'dark': Admin portal / legal-page dark skin (deep blue-navy)
+ * - 'light': Primary production theme (white surfaces, brass accents)
+ * - 'dark': Marketing / admin / legal warm-black skin (brass accents)
  * - 'console': Archived lime/charcoal aesthetic
  * - 'lattice': Archived dark-first design system (oklch-based, graph-native)
  */
@@ -36,12 +36,12 @@ export const AVAILABLE_THEMES = [
   {
     id: 'light',
     name: 'SkillsHome (Default)',
-    description: 'Current production theme — white surfaces, LinkedIn-blue accents',
+    description: 'Current production theme — white surfaces, brass accents',
   },
   {
     id: 'dark',
     name: 'SkillsHome (Admin dark)',
-    description: 'Deep blue-navy skin used for the admin portal and legal pages',
+    description: 'Warm-black skin used for marketing, admin portal and legal pages',
   },
   {
     id: 'console',

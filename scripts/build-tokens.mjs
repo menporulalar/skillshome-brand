@@ -93,11 +93,11 @@ const monotone = (title, fill) =>
 const appIcon =
   `${svgOpen(80, 'SkillsHome app icon')}\n` +
   `  <title>SkillsHome — app icon</title>\n` +
-  `  <rect width="80" height="80" rx="18" fill="${BRAND.blueDeep}"></rect>\n` +
+  `  <rect width="80" height="80" rx="18" fill="${BRAND.brassDeep}"></rect>\n` +
   `  <g transform="translate(17.6 17.6) scale(0.7)">\n` +
   `    <path d="${CHEVRON.bottom}" fill="${BRAND.white}"></path>\n` +
-  `    <path d="${CHEVRON.middle}" fill="${BRAND.blueSky}"></path>\n` +
-  `    <path d="${CHEVRON.top}" fill="${BRAND.blueLight}"></path>\n` +
+  `    <path d="${CHEVRON.middle}" fill="${BRAND.brassLight}"></path>\n` +
+  `    <path d="${CHEVRON.top}" fill="${BRAND.brass}"></path>\n` +
   `  </g>\n` +
   `</svg>\n`;
 
@@ -105,17 +105,17 @@ const outputs = {
   'theme/tokens.css': tokensCss,
   'logo/assets/skillshome-icon.svg': appIcon,
   'logo/assets/skillshome-mark-color.svg': tricolor('SkillsHome — Ascending Facets', {
-    bottom: BRAND.blueDeep,
-    middle: BRAND.blue,
-    top: BRAND.blueLight,
+    bottom: BRAND.brassDeep,
+    middle: BRAND.bronze,
+    top: BRAND.brass,
   }),
   'logo/assets/skillshome-mark-color-dark.svg': tricolor(
     'SkillsHome — Ascending Facets (for dark backgrounds)',
-    { bottom: BRAND.white, middle: BRAND.blueSky, top: BRAND.blueLight },
+    { bottom: BRAND.white, middle: BRAND.brassLight, top: BRAND.brass },
   ),
   'logo/assets/skillshome-mark-mono.svg': monotone(
     'SkillsHome — single colour',
-    BRAND.blueDeep,
+    BRAND.brassDeep,
   ),
   'logo/assets/skillshome-mark-reversed.svg': monotone(
     'SkillsHome — reversed (single colour, for dark/photo backgrounds)',

@@ -3,14 +3,14 @@
  *
  * Direction: "Ascending Facets" (brand handoff, design_handoff_skillshome_logo).
  * Three interlocking, constant-weight chevrons stacked and rising
- * (blueDeep → blue → blueLight, bottom to top). Reads as layered verified
+ * (brassDeep → bronze → brass, bottom to top). Reads as layered verified
  * skills, an upward arrow (growth), and a roofline (home).
  *
  * Colors come from ../theme/tokens BRAND — never re-declare them here, or a
  * recolor of tokens.ts silently leaves the logo behind.
  *
  * Props:
- *  variant — "light" (blue-deep/blue/blue-light on light bg) | "dark" (white/blue-sky/blue-light on dark bg)
+ *  variant — "light" (brass-deep/bronze/brass on light bg) | "dark" (white/brass-light/brass on dark bg)
  *  size    — Tailwind height class, e.g. "h-8", "h-9", "h-12"   default: "h-9"
  */
 import { BRAND } from '../theme/tokens';
@@ -30,8 +30,8 @@ const CHEVRONS = {
 export function SkillsHomeIcon({ variant = 'light', size = 'h-9' }: SkillsHomeLogoProps) {
   const c =
     variant === 'dark'
-      ? { bottom: BRAND.white, middle: BRAND.blueSky, top: BRAND.blueLight }
-      : { bottom: BRAND.blueDeep, middle: BRAND.blue, top: BRAND.blueLight };
+      ? { bottom: BRAND.white, middle: BRAND.brassLight, top: BRAND.brass }
+      : { bottom: BRAND.brassDeep, middle: BRAND.bronze, top: BRAND.brass };
 
   return (
     <svg
@@ -54,8 +54,8 @@ export function SkillsHomeWordmark({
   variant = 'light',
   size = 'h-9',
 }: SkillsHomeLogoProps) {
-  const skillsColor = variant === 'dark' ? BRAND.white : BRAND.blueDeep;
-  const homeColor = variant === 'dark' ? BRAND.blueLight : BRAND.blue;
+  const skillsColor = variant === 'dark' ? BRAND.white : BRAND.brassDeep;
+  const homeColor = variant === 'dark' ? BRAND.brass : BRAND.bronze;
 
   return (
     <span style={{ display: 'inline-flex', alignItems: 'center', gap: 10 }}>

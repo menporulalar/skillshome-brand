@@ -29,6 +29,8 @@ const ratio = (a, b) => {
 const PAIRS = [
   ['White text on primary button', BRAND.white, LIGHT_THEME.primary, 4.5],
   ['White text on primary hover', BRAND.white, LIGHT_THEME.primaryHover, 4.5],
+  ['onAccent text on brass CTA (light)', LIGHT_THEME.onAccent, LIGHT_THEME.accent, 4.5],
+  ['Accent fill against panel (non-text)', LIGHT_THEME.accent, LIGHT_THEME.panel, 1.0],
   ['Primary link on page bg', LIGHT_THEME.primary, LIGHT_THEME.bg, 4.5],
   ['Primary link on panel', LIGHT_THEME.primary, LIGHT_THEME.panel, 4.5],
   ['Body ink on panel', LIGHT_THEME.ink, LIGHT_THEME.panel, 4.5],
@@ -45,13 +47,14 @@ const PAIRS = [
   ['Dark ink2 on dark bg', DARK_THEME.ink2, DARK_THEME.bg, 4.5],
   ['Dark accent on dark bg', DARK_THEME.accent, DARK_THEME.bg, 4.5],
   ['Dark accent on dark panel', DARK_THEME.accent, DARK_THEME.panel, 4.5],
+  ['onAccent text on brass CTA (dark)', DARK_THEME.onAccent, DARK_THEME.accent, 4.5],
   ['Dark score: self on dark bg', DARK_THEME.scoreSelf, DARK_THEME.bg, 4.5],
   ['Dark score: system on dark bg', DARK_THEME.scoreSystem, DARK_THEME.bg, 4.5],
   ['Dark score: verified on dark bg', DARK_THEME.scoreVerified, DARK_THEME.bg, 4.5],
-  ['Logo: blueDeep on white', BRAND.blueDeep, BRAND.white, 3.0],
-  ['Logo: blue on white', BRAND.blue, BRAND.white, 3.0],
-  ['Logo: blueSky on blueDeep tile', BRAND.blueSky, BRAND.blueDeep, 3.0],
-  ['Logo: blueLight on blueDeep tile', BRAND.blueLight, BRAND.blueDeep, 3.0],
+  ['Logo: brassDeep on white', BRAND.brassDeep, BRAND.white, 3.0],
+  ['Logo: bronze on white', BRAND.bronze, BRAND.white, 3.0],
+  ['Logo: brassLight on brassDeep tile', BRAND.brassLight, BRAND.brassDeep, 3.0],
+  ['Logo: brass on brassDeep tile', BRAND.brass, BRAND.brassDeep, 3.0],
 ];
 
 let failed = 0;
