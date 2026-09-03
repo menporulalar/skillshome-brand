@@ -25,8 +25,10 @@ const ratio = (a, b) => {
 };
 
 // `min` is the floor this pair must clear: 4.5 for body text, 3.0 for large or
-// non-text (borders, icons, decorative fills).
+// non-text (borders, icons, decorative fills). The "claimed" score bar is the
+// faintest rank by design and only needs to be perceptible (1.5).
 const PAIRS = [
+  // ── LIGHT_THEME (white-surface `brand` Facet light mode) ──
   ['White text on primary button', BRAND.white, LIGHT_THEME.primary, 4.5],
   ['White text on primary hover', BRAND.white, LIGHT_THEME.primaryHover, 4.5],
   ['onAccent text on brass CTA (light)', LIGHT_THEME.onAccent, LIGHT_THEME.accent, 4.5],
@@ -39,22 +41,33 @@ const PAIRS = [
   ['Success on panel', LIGHT_THEME.success, LIGHT_THEME.panel, 4.5],
   ['Warning on panel', LIGHT_THEME.warning, LIGHT_THEME.panel, 4.5],
   ['Error on panel', LIGHT_THEME.error, LIGHT_THEME.panel, 4.5],
-  ['Score: self on panel', LIGHT_THEME.scoreSelf, LIGHT_THEME.panel, 4.5],
-  ['Score: system on panel', LIGHT_THEME.scoreSystem, LIGHT_THEME.panel, 4.5],
-  ['Score: verified on panel', LIGHT_THEME.scoreVerified, LIGHT_THEME.panel, 4.5],
+  ['Score bar: claimed on panel (faint by design)', LIGHT_THEME.scoreSelf, LIGHT_THEME.panel, 3.0],
+  ['Score bar: AI-inferred on panel', LIGHT_THEME.scoreSystem, LIGHT_THEME.panel, 3.0],
+  ['Score bar: verified on panel', LIGHT_THEME.scoreVerified, LIGHT_THEME.panel, 3.0],
   ['Primary tint against panel (non-text)', LIGHT_THEME.primaryTint, LIGHT_THEME.panel, 1.0],
+
+  // ── DARK_THEME (warm-black — the primary skin) ──
   ['Dark ink on dark bg', DARK_THEME.ink, DARK_THEME.bg, 4.5],
-  ['Dark ink2 on dark bg', DARK_THEME.ink2, DARK_THEME.bg, 4.5],
+  ['Dark lede on dark bg', DARK_THEME.inkLede, DARK_THEME.bg, 4.5],
+  ['Dark body prose on dark bg', DARK_THEME.ink1, DARK_THEME.bg, 4.5],
+  ['Dark secondary prose on dark bg', DARK_THEME.ink2, DARK_THEME.bg, 4.5],
+  ['Dark decorative ink on dark bg (large only)', DARK_THEME.ink3, DARK_THEME.bg, 3.0],
   ['Dark accent on dark bg', DARK_THEME.accent, DARK_THEME.bg, 4.5],
   ['Dark accent on dark panel', DARK_THEME.accent, DARK_THEME.panel, 4.5],
-  ['onAccent text on brass CTA (dark)', DARK_THEME.onAccent, DARK_THEME.accent, 4.5],
-  ['Dark score: self on dark bg', DARK_THEME.scoreSelf, DARK_THEME.bg, 4.5],
-  ['Dark score: system on dark bg', DARK_THEME.scoreSystem, DARK_THEME.bg, 4.5],
-  ['Dark score: verified on dark bg', DARK_THEME.scoreVerified, DARK_THEME.bg, 4.5],
-  ['Logo: brassDeep on white', BRAND.brassDeep, BRAND.white, 3.0],
-  ['Logo: bronze on white', BRAND.bronze, BRAND.white, 3.0],
-  ['Logo: brassLight on brassDeep tile', BRAND.brassLight, BRAND.brassDeep, 3.0],
-  ['Logo: brass on brassDeep tile', BRAND.brass, BRAND.brassDeep, 3.0],
+  ['accentInk on brass CTA (dark)', DARK_THEME.accentInk, DARK_THEME.accent, 4.5],
+  ['Dark score bar: claimed on dark bg (faint by design)', DARK_THEME.scoreSelf, DARK_THEME.bg, 1.5],
+  ['Dark score bar: AI-inferred on dark bg', DARK_THEME.scoreSystem, DARK_THEME.bg, 4.5],
+  ['Dark score bar: verified on dark bg', DARK_THEME.scoreVerified, DARK_THEME.bg, 4.5],
+  ['Dark warn on dark bg', DARK_THEME.warn, DARK_THEME.bg, 4.5],
+  ['Dark crit on dark bg', DARK_THEME.crit, DARK_THEME.bg, 4.5],
+
+  // ── Logo mark ──
+  ['Logo dark: deep chevron on warm-black bg', DARK_THEME.logoDeep, DARK_THEME.bg, 3.0],
+  ['Logo dark: mid chevron on warm-black bg', DARK_THEME.logoMid, DARK_THEME.bg, 3.0],
+  ['Logo dark: bright chevron on warm-black bg', DARK_THEME.logoBright, DARK_THEME.bg, 3.0],
+  ['Logo light: deep chevron on white', '#6d5120', BRAND.white, 3.0],
+  ['Logo light: mid chevron on white', '#b3812c', BRAND.white, 3.0],
+  ['App icon: darkest chevron on tile', BRAND.brassDeepMark, DARK_THEME.bg, 3.0],
 ];
 
 let failed = 0;

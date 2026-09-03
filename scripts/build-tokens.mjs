@@ -66,12 +66,24 @@ const CHEVRON = {
   top: 'M21 21 L32 10 L43 21 L37.6 21 L32 15.4 L26.4 21 Z',
 };
 
-const svgOpen = (size, label) =>
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${size} ${size}" width="${size}" height="${size}" role="img" aria-label="${label}">`;
+// The bare mark is drawn with NO background tile (design_system_brass README §6),
+// and its viewBox is tightened to the artwork bounds (x13–51 / y10–57). A
+// 0 0 64 64 box left ~40% empty space, rendering the mark undersized beside a
+// 16px wordmark. Below ~20px use the mono SVG — a three-step ramp turns to mud.
+const MARK_VIEWBOX = '11 8 42 51';
 
-/** Three separately-filled chevrons — matches SkillsHomeIcon's per-variant colors. */
+const svgOpen = (viewBox, label) => {
+  const [, , w, h] = viewBox.split(' ');
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${viewBox}" width="${w}" height="${h}" role="img" aria-label="${label}">`;
+};
+
+/**
+ * Three separately-filled chevrons. `fills` is { bottom, middle, top }.
+ * The mark brightens DOWNWARD — the bottom chevron is the brightest. Inverted it
+ * reads as a different mark (README §6).
+ */
 const tricolor = (title, fills, indent = '  ') =>
-  `${svgOpen(64, 'SkillsHome')}\n` +
+  `${svgOpen(MARK_VIEWBOX, 'SkillsHome')}\n` +
   `  <title>${title}</title>\n` +
   `${indent}<path d="${CHEVRON.bottom}" fill="${fills.bottom}"></path>\n` +
   `${indent}<path d="${CHEVRON.middle}" fill="${fills.middle}"></path>\n` +
@@ -80,7 +92,7 @@ const tricolor = (title, fills, indent = '  ') =>
 
 /** Single-fill variants — one <g fill> wrapping all three chevrons. */
 const monotone = (title, fill) =>
-  `${svgOpen(64, 'SkillsHome')}\n` +
+  `${svgOpen(MARK_VIEWBOX, 'SkillsHome')}\n` +
   `  <title>${title}</title>\n` +
   `  <g fill="${fill}">\n` +
   `    <path d="${CHEVRON.bottom}"></path>\n` +
@@ -89,36 +101,40 @@ const monotone = (title, fill) =>
   `  </g>\n` +
   `</svg>\n`;
 
-// Rounded-square app icon: the dark-background lockup on a blueDeep tile.
+// Deepened brass ramp for the mark on light/paper backgrounds — from the
+// SkillsHomeLogo `light` variant. Graphic-only values; not tokens.
+const MARK_LIGHT = { bottom: BRAND.brass, middle: '#b3812c', top: '#6d5120' };
+
+// Rounded-square PWA/app icon. This is the one lockup that keeps a tile — a
+// maskable icon must fill its safe area. Warm-black tile, dark-ramp chevrons.
 const appIcon =
-  `${svgOpen(80, 'SkillsHome app icon')}\n` +
+  `${svgOpen('0 0 80 80', 'SkillsHome app icon')}\n` +
   `  <title>SkillsHome — app icon</title>\n` +
-  `  <rect width="80" height="80" rx="18" fill="${BRAND.brassDeep}"></rect>\n` +
+  `  <rect width="80" height="80" rx="18" fill="${DARK_THEME.bg}"></rect>\n` +
   `  <g transform="translate(17.6 17.6) scale(0.7)">\n` +
-  `    <path d="${CHEVRON.bottom}" fill="${BRAND.white}"></path>\n` +
-  `    <path d="${CHEVRON.middle}" fill="${BRAND.brassLight}"></path>\n` +
-  `    <path d="${CHEVRON.top}" fill="${BRAND.brass}"></path>\n` +
+  `    <path d="${CHEVRON.bottom}" fill="${BRAND.brassLight}"></path>\n` +
+  `    <path d="${CHEVRON.middle}" fill="${BRAND.brass}"></path>\n` +
+  `    <path d="${CHEVRON.top}" fill="${BRAND.brassDeepMark}"></path>\n` +
   `  </g>\n` +
   `</svg>\n`;
 
 const outputs = {
   'theme/tokens.css': tokensCss,
   'logo/assets/skillshome-icon.svg': appIcon,
-  'logo/assets/skillshome-mark-color.svg': tricolor('SkillsHome — Ascending Facets', {
-    bottom: BRAND.brassDeep,
-    middle: BRAND.bronze,
-    top: BRAND.brass,
-  }),
+  'logo/assets/skillshome-mark-color.svg': tricolor(
+    'SkillsHome — Ascending Facets (for light backgrounds)',
+    MARK_LIGHT,
+  ),
   'logo/assets/skillshome-mark-color-dark.svg': tricolor(
     'SkillsHome — Ascending Facets (for dark backgrounds)',
-    { bottom: BRAND.white, middle: BRAND.brassLight, top: BRAND.brass },
+    { bottom: BRAND.brassLight, middle: BRAND.brass, top: BRAND.brassDeepMark },
   ),
   'logo/assets/skillshome-mark-mono.svg': monotone(
-    'SkillsHome — single colour',
-    BRAND.brassDeep,
+    'SkillsHome — single colour (flat brass; use below ~20px)',
+    BRAND.brass,
   ),
   'logo/assets/skillshome-mark-reversed.svg': monotone(
-    'SkillsHome — reversed (single colour, for dark/photo backgrounds)',
+    'SkillsHome — reversed (single colour, for photo backgrounds)',
     BRAND.white,
   ),
 };

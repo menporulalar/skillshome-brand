@@ -40,7 +40,7 @@ const parse = (hex) => {
 };
 
 const oldPalette = fromArg.split(',').map(parse);
-const newPalette = [BRAND.brassDeep, BRAND.bronze, BRAND.brass, BRAND.brassLight, BRAND.white].map(parse);
+const newPalette = [BRAND.brassDeep, BRAND.brassDeepMark, BRAND.brass, BRAND.brassLight, BRAND.white].map(parse);
 
 if (oldPalette.length !== newPalette.length) {
   console.error(`--from needs exactly ${newPalette.length} colors, got ${oldPalette.length}.`);
