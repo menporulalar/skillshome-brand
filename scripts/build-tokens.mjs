@@ -182,6 +182,21 @@ for (const [path, content] of Object.entries(outputs)) {
   writeFileSync(abs, content);
 }
 
+/** True when two PNG buffers decode to the same RGBA pixels (identical bytes short-circuit). */
+async function samePng(sharp, a, b) {
+  if (a.equals(b)) return true;
+  try {
+    const decode = async (png) => {
+      const { data, info } = await sharp(png).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+      return { data, width: info.width, height: info.height };
+    };
+    const [x, y] = await Promise.all([decode(a), decode(b)]);
+    return x.width === y.width && x.height === y.height && x.data.equals(y.data);
+  } catch {
+    return false; // undecodable counts as stale
+  }
+}
+
 const sharp = await loadSharp();
 if (!sharp) {
   const note =
@@ -208,9 +223,12 @@ if (!sharp) {
     } catch {
       /* missing counts as stale */
     }
-    // Re-encoding is deterministic for a given sharp/libvips build, so a byte
-    // compare is a valid drift signal here.
-    if (current && current.equals(rendered)) continue;
+    // Compare DECODED PIXELS, not file bytes. PNG encoding is only deterministic for a
+    // given sharp/libvips build, and sharp is borrowed from whichever repo runs this
+    // script — a consumer's dependency bump changed the encoder output for icon-192
+    // while every pixel stayed identical, failing its CI on nothing visible. A pixel
+    // compare still catches any real change to the icon or its colors.
+    if (current && (await samePng(sharp, current, rendered))) continue;
     stale.push(path);
     if (CHECK) continue;
     writeFileSync(abs, rendered);
